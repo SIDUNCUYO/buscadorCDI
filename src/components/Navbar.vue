@@ -44,7 +44,7 @@
                 <ul class="list-group">
                     <li class="list-group-item"><strong>Editor: </strong>260a</li>
                     <li class="list-group-item"><strong>Año: </strong>año</li>
-                    <li class="list-group-item"><strong>: </strong> Hace referencia al ámbito de aplicación del acto administrativo.</li>
+                  
                     <li class="list-group-item"><strong>tema: </strong>Hace referencia al tema 650a</li>
                     
                 </ul>
