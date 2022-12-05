@@ -1,36 +1,19 @@
-name: Publico sitio
+name: DEPLOY TO cdi
 
 on:
   push:
-    branches: main
-    paths:
-      - "/"
-
-  pull_request:
-    branches: main
-    paths:
-      - "/"
-
-defaults:
-  run:
-    working-directory: /
+    branches:
+      - main
 
 jobs:
-  build-deploy:
+  firebase-deploy:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout 🛎️
-        uses: actions/checkout@master
-        with:
-          persist-credentials: false
-
-      - name: Install 🔧
-        run: yarn install
-
-      - name: Build 🏗️
-        run: yarn build
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@master
+      - name: Installing project dependencies
+      - run: yarn install
+      - name: Building the project
+      - run: yarn build
         env:
           NODE_ENV: production
-
-     
