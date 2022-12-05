@@ -1,15 +1,15 @@
-name: Deploy docs
+name: Publico sitio
 
 on:
   push:
     branches: main
     paths:
-      - "/*"
+      - "/"
 
   pull_request:
     branches: main
     paths:
-      - "/*"
+      - "/"
 
 defaults:
   run:
