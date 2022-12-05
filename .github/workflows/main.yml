@@ -20,4 +20,7 @@ jobs:
           node-version: ${{ matrix.node }}
       - run: npm i @vue/cli-service
       - run: npm run build
-      
+      - uses: actions/upload-artifact@v3
+        with:
+           name: my-dist
+           path: dist/ # or path/to/artifact      
