@@ -94,10 +94,10 @@
                 <div class="table-responsive-md">
                     <table v-if=!loading class="table">
                         <thead>
-                            <!-- <th rowspan="1" colspan="1">#ID</th> -->
-                            <th rowspan="1" colspan="1" class="d-none d-md-block">Tipo</th>
-                            <th rowspan="1" colspan="1">Título</th>
-                            <th rowspan="1" colspan="1" class="d-none d-md-block">Generador</th>
+                            <th rowspan="1" colspan="1">#ID</th>
+                            <th rowspan="1" colspan="1" class="d-none d-md-block">Título</th>
+                            <th rowspan="1" colspan="1">Editor</th>
+                            <th rowspan="1" colspan="1" class="d-none d-md-block">Autor/es</th>
 
                             <th rowspan="1" colspan="1">Fecha</th>
 
@@ -106,38 +106,32 @@
                             <tr v-for="(rec, index) in records" :key="index">
 
                                 <td class="d-none d-md-block">
-                                    {{ rec.rawData.tipo_str }}
-                                    <div class="small"><small class="text-muted small">{{ rec.id }}</small>
+                                     <div class="small">{{ rec.id }}
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="d-sm-none">
-                                        {{ rec.rawData.tipo_str }}</div>
+                                    
+                                        
                                     <a target="fichareg"
-                                        :href="urlrecords + rec.rawData.fecha_str.substring(0, 4) + '/' + rec.rawData.fecha_str.substring(5, 7) + '/' + rec.rawData.archivo_str"
+                                        :href="(urlrecords + rec.id)"
                                         class="link">{{ rec.title }}</a>
 
 
-                                    <blockquote v-if="rec.rawData.descripcion_str">
-                                        {{ rec.rawData.descripcion_str }}
+                                    <blockquote v-if="rec.rawData.topic_facet">
+                                        {{ rec.rawData.topic_facet.join(' - ') }}
                                     </blockquote>
 
-                                    <span class="badge rounded-pill text-bg-success"
-                                        v-show="rec.rawData.estado_str == 'V'">
-                                        Vigente
-                                    </span>
-                                    <span class="badge rounded-pill text-bg-danger"
-                                        v-show="rec.rawData.estado_str == 'D'"> Derogada</span>
-                                    <span class="badge rounded-pill text-bg-danger"
-                                        v-show="rec.rawData.estado_str == 'P'"> Parcialmente Derogada </span>
-                                    <span class="badge rounded-pill text-bg-secondary"
-                                        v-show="rec.rawData.estado_str == 'A'"> Actualizada </span>
+                                    
                                 </td>
-                                <td class="d-none d-md-block">
-                                    {{ rec.rawData.dep_genera_str }}
+                                <td class="d-none d-md-block" >
+                                    <span v-if="rec.rawData.publisher">
+                                    {{ rec.rawData.publisher.join('; ') }}
+                                </span>
                                 </td>
-                                <td>{{ formatfecha(rec.rawData.fecha_str) }}
+                                <td>{{ rec.rawData.author_sort }}
                                 </td>
+                                <td>
+                                {{rec.rawData.publishDate.join(' - ')}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -171,16 +165,13 @@ import Spinner from './Spinner.vue'
 
 const conf = {
     facets: {
-        'tipo_str': 'Tipo',
+        'publisher_str_mv': 'Editor',
         'publishDate': 'Año',
-        'dep_aplicacion_str': 'Aplicado',
-        'dep_genera_str': 'Generado',
-        'categoria_str': 'Categoría',
-        // 'estado_str': 'Estado'
-
+        'topic_facet': 'Tema',
+        
     },
     apiurl: 'https://bibliotecas.uncuyo.edu.ar/explorador3/api/v1/search',
-    urlrecords: 'https://www.uncuyo.edu.ar/filesd/'
+    urlrecords: 'https://bidi.la/libro/'
 };
 export default {
     components: {
@@ -199,7 +190,7 @@ export default {
             records: [],
             errorencarga: false,
             facets: [],
-            filters: ['building:DigestoUNCUYO', 'record_format:digesto'],
+            filters: ['collection:CID', 'record_format:marcbidi'],
             titfilters: [],
             facettitles: conf.facets, // Object.values(conf.facets)
             filtrosextras: false,
@@ -231,7 +222,7 @@ export default {
 
         },
         dbuscar: function (page) {
-            console.log(page)
+           
             this.loading = true;
             //bibliotecas.uncu.edu.ar/explorador3 //localhost/vufind
             //const url = 'https://bibliotecas.uncuyo.edu.ar/explorador3/api/v1/search';
@@ -291,7 +282,7 @@ export default {
 
         },
         resetfilters: function () {
-            this.filters = ['building:DigestoUNCUYO', 'record_format:digesto'];
+            this.filters = ['collection:CID', 'record_format:marcbidi'];
             this.titfilters = [];
             this.dbuscar(0);
         },
@@ -302,7 +293,7 @@ export default {
 
             this.filters.push(v);
             this.titfilters.push(k);
-            console.log('add')
+            
             console.log(this.titfilters)
             this.dbuscar();
         }

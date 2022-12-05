@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <a class="vertical-align:middle" href="#">
-                        <img style="width: 350px;" src="@/assets/Uncuyo_Digesto.png" />
+                        <img style="width: 350px;" src="@/assets/logo-sid.jpg" />
                
                     </a>
                 </div>
@@ -23,9 +23,8 @@
         <div class="container pt-3 pb-2">
             <div class="row">
                 <div class="col-md-10 " style="color:#000;">
-                    <h2 class="fw-bold">Digesto Administrativo</h2>
-                    <p style="color:#000">El Digesto Universitario es un compendio ordenado y sistematizado de todas las normas emanadas de el/la Rector/a, el Consejo Superior y la Asamblea Universitaria de la Universidad Nacional de Cuyo.<br/> La publicidad de los distintos
-                        actos administrativos tienen por finalidad la transparencia de los mismos.
+                    <h2 class="fw-bold">Buscador registros marc CDI</h2>
+                    <p style="color:#000">Buscador de registros (BETA) CDI (https://cdi.cin.edu.ar)
                         <a type="" href="#" class="pe-auto link" data-bs-toggle="modal" data-bs-target="#myModal">(+ info)</a>
                     </p>
 
@@ -43,13 +42,13 @@
             <!--algo-->
             <div class="modal-body fs-6">
                 <ul class="list-group">
-                    <li class="list-group-item"><strong>Tipo: </strong>Hace referencia al tipo de norma: resolución, ordenanza, circular, declaración, etc.</li>
-                    <li class="list-group-item"><strong>Año: </strong>Hace referencia al año que fue emitido el acto administrativo</li>
-                    <li class="list-group-item"><strong>Aplicado: </strong> Hace referencia al ámbito de aplicación del acto administrativo.</li>
-                    <li class="list-group-item"><strong>Generado: </strong>Hace referencia a la dependencia que generó el acto administrativo</li>
-                    <li class="list-group-item"><strong>Categoría: </strong> Hace referencia al criterio de clasificación de los actos administrativos generados: pagos, incentivos, designación etc.</li>
+                    <li class="list-group-item"><strong>Editor: </strong>260a</li>
+                    <li class="list-group-item"><strong>Año: </strong>año</li>
+                    <li class="list-group-item"><strong>: </strong> Hace referencia al ámbito de aplicación del acto administrativo.</li>
+                    <li class="list-group-item"><strong>tema: </strong>Hace referencia al tema 650a</li>
+                    
                 </ul>
-                <div class="lead">
+                <div class="hide lead">
                     Las Columnas tipo y generado se ocultan automaticamente en vista de teléfonos o pantallas pequeñas.
                 </div>
             </div>
