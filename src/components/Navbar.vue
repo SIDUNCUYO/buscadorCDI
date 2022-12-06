@@ -24,7 +24,7 @@
             <div class="row">
                 <div class="col-md-10 " style="color:#000;">
                     <h2 class="fw-bold">Buscador registros marc CID</h2>
-                    <p style="color:#000">Buscador de registros (BETA) CDI (https://cid.cin.edu.ar)
+                    <p style="color:#000">Buscador de registros (beta) CDI (https://cid.cin.edu.ar)
                         <a type="" href="#" class="pe-auto link" data-bs-toggle="modal" data-bs-target="#myModal">(+ info)</a>
                     </p>
 
